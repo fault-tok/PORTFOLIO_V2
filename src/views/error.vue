@@ -1,6 +1,6 @@
 <template>
     <div>
-        asdsadsad
+        error
     </div>
 </template>
 <script setup>
