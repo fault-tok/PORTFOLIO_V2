@@ -42,6 +42,9 @@
                         </div>
                     </div>                    
                 </div>                
+            </div>
+            <div class="content">
+                ss
             </div>            
         </div>
     </div>
@@ -102,6 +105,7 @@ window.onscroll = scroll_bar_top
     align-items:center;
     height: 100%;
     margin-top: 20px;
+    margin-bottom: 20px;
     padding-right: 3%;
     padding-left: 3%;
 }
@@ -162,5 +166,12 @@ window.onscroll = scroll_bar_top
     width: 25px;
     height: 25px;
     cursor: pointer;
+}
+.content{
+    width: 100%;
+    height: auto;
+    padding-top: 150px;
+    padding-bottom: 150px;
+    background-color: rgb(29, 29, 29);
 }
 </style>
