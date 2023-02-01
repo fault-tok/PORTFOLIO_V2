@@ -8,18 +8,6 @@
                         @click="slide_to_top()"
                     />
                 </div>
-                <!-- <div class="flex-grap">
-
-                </div>
-                <div class="menu-bar">
-                    ABOUT
-                </div>
-                <div class="menu-bar">
-                    ABOUT
-                </div>
-                <div class="menu-bar">
-                    ABOUT
-                </div> -->
             </div>
         </div>
         <div class="container">
@@ -65,20 +53,24 @@ const navbar_top = ref(false);
 
 const scroll_bar_top = () => {
     const navbar_top_doc = document.getElementById("nav-top").style
-    if(document.documentElement.scrollTop > 180){ 
-        navbar_top_doc.display = "block";
+    if(document.documentElement.scrollTop > 140){ 
+        // navbar_top_doc.display = "block";
+        document.getElementById("nav-top").visibility = "visible"
+        navbar_top_doc.opacity = '1'
         navbar_top_doc.backgroundColor = 'rgba(5, 58, 104, 0.8)'
     } else {
-        navbar_top_doc.display = "none";
+        // navbar_top_doc.display = "none";
+        document.getElementById("nav-top").visibility = "hidden"
+        navbar_top_doc.opacity = '0'
         navbar_top_doc.backgroundColor = 'rgba(0, 0, 0, 0)'
     }
-    // console.log(document.body.scrollTop);
     console.log(document.documentElement.scrollTop);
 }
 
 const display_navbar_top = () => {
     if(document.documentElement.scrollTop == 0){
-        document.getElementById("nav-top").style.display = 'none'
+        document.getElementById("nav-top").visibility = "hidden"
+        document.getElementById("nav-top").style.opacity = '0'
     }   
 }
 
@@ -132,6 +124,7 @@ window.onscroll = scroll_bar_top
     position: fixed;
     top: 0;
     z-index: 999;
+    transition: all .5s ease-in-out;
 }
 .navbar-top .nav-content{
     display: flex;
