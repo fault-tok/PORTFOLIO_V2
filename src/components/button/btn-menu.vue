@@ -19,5 +19,6 @@ console.log(props.href);
 .btn-main{
     margin: 0 20px;
     cursor: pointer;
+    color: #000000;
 }
 </style>

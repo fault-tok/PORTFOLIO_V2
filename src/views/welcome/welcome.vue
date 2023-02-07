@@ -8,9 +8,11 @@
                                 src="../../assets/images/apple-logo.png"
                             />
                         </div>
-                        <div class="menu-bar">
+                        <nav class="menu-bar">
                             <btnMenu
                                 text="HOME"
+                                href="#home"
+                                
                             />
                             <btnMenu
                                 text="ABOUT ME"
@@ -19,7 +21,7 @@
                             <btnMenu
                                 text="SKILL"
                             />
-                        </div>
+                        </nav>
                     </div>
                     <div class="navbar-top-right">
                         <div class="social-contact">
@@ -45,12 +47,14 @@
                 </div>                
             </div>
         <div class="container">            
-            <section class="main">
-                <HeaderText/>
+            <section id="home">
+                <div class="main">
+                    <HeaderText/>
+                </div>                
             </section>
             <section id="aboutme">
                 <div class="aboutme">
-                    sss
+                    ABOUT ME
                 </div>
             </section>
         </div>
@@ -179,6 +183,10 @@ window.onscroll = scroll_bar_top
     padding-bottom: 150px;
     background-color: rgb(29, 29, 29);
 }
+#home, #aboutme{
+    scroll-margin-top: 80px;
+}
+
 .aboutme{
     
 }
