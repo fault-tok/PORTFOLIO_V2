@@ -1,22 +1,23 @@
 <template>
     <div>
-        <div id="nav-top" class="navbar-top" v-if="navbar_top == false">
-            <div class="nav-content">
-                <div class="desktop-logo">
-                    <img                    
-                        src="../../assets/images/apple-logo.png"
-                        @click="slide_to_top()"
-                    />
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="navbar-top-main">
+        <div id="navbar-top-main" class="navbar-top-main">
                 <div class="navbar-content-main">
                     <div class="navbar-top-left">
                         <div class="desktop-logo">
                             <img
                                 src="../../assets/images/apple-logo.png"
+                            />
+                        </div>
+                        <div class="menu-bar">
+                            <btnMenu
+                                text="HOME"
+                            />
+                            <btnMenu
+                                text="ABOUT ME"
+                                href="#aboutme"
+                            />
+                            <btnMenu
+                                text="SKILL"
                             />
                         </div>
                     </div>
@@ -43,44 +44,41 @@
                     </div>                    
                 </div>                
             </div>
-            <div class="content">
-                ss
-            </div>            
+        <div class="container">            
+            <section class="main">
+                <HeaderText/>
+            </section>
+            <section id="aboutme">
+                <div class="aboutme">
+                    sss
+                </div>
+            </section>
         </div>
     </div>
 </template>
 <script setup>
 import { onMounted, ref, watch } from "vue";
-
-const navbar_top = ref(false);
+import HeaderText from "../../components/header.vue";
+import btnMenu from "../../components/button/btn-menu.vue";
 
 const scroll_bar_top = () => {
-    const navbar_top_doc = document.getElementById("nav-top").style
-    if(document.documentElement.scrollTop > 140){ 
-        // navbar_top_doc.display = "block";
-        document.getElementById("nav-top").visibility = "visible"
-        navbar_top_doc.opacity = '1'
-        navbar_top_doc.backgroundColor = 'rgba(5, 58, 104, 0.8)'
+    const navbar_top_doc = document.getElementById("navbar-top-main")
+    if(document.body.scrollTop > 140 || document.documentElement.scrollTop > 140){ 
+        navbar_top_doc.style.position = 'fixed';
+        navbar_top_doc.style.backgroundColor = 'rgba(200, 200, 200, 0.65)'; 
+        navbar_top_doc.classList.add('navbar-top-main-animation');
     } else {
-        // navbar_top_doc.display = "none";
-        document.getElementById("nav-top").visibility = "hidden"
-        navbar_top_doc.opacity = '0'
-        navbar_top_doc.backgroundColor = 'rgba(0, 0, 0, 0)'
+        navbar_top_doc.style.position = 'fixed';
+        navbar_top_doc.style.backgroundColor = 'rgba(255, 255, 255, 1)';  
+        navbar_top_doc.classList.remove('navbar-top-main-animation');
     }
-    console.log(document.documentElement.scrollTop);
 }
 
 const display_navbar_top = () => {
-    if(document.documentElement.scrollTop == 0){
-        document.getElementById("nav-top").visibility = "hidden"
-        document.getElementById("nav-top").style.opacity = '0'
+    if(document.body.scrollTop == 0 || document.documentElement.scrollTop == 0){
+        document.getElementById("navbar-top-main").style.position = 'fixed';
     }   
 }
-
-const slide_to_top = () => {
-    document.documentElement.scrollTop = 0    
-}
-
 
 onMounted(() => {
     display_navbar_top();
@@ -92,30 +90,37 @@ window.onscroll = scroll_bar_top
 <style lang="css" scoped>
 .container{
     width: 100vw;
-    height: 5000px;
+    height: 5000px;    
+    margin-top: 80px;
 }
 .navbar-top-main{
     width: 100%;
     height: 80px;
+    top: 0;
 }
-.navbar-top-main .navbar-content-main{
+.navbar-top-main-animation{
+    width: 100%;
+    height: 80px;
+    top: 0;
+    animation-name: navbar-move;
+    animation-duration: .8s;
+}
+.navbar-content-main{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items:center;
     height: 100%;
-    margin-top: 20px;
-    margin-bottom: 20px;
     padding-right: 3%;
     padding-left: 3%;
 }
-.navbar-top-main .navbar-content-main .navbar-top-left{
+.navbar-top-left{
     width: 100%;
     height: 100%;
     display: flex;
     align-items: center;   
 }
-.navbar-top-main .navbar-content-main .navbar-top-right{
+.navbar-top-right{
     width: 100%;
     height: 100%;
     display: flex;
@@ -130,7 +135,7 @@ window.onscroll = scroll_bar_top
     z-index: 999;
     transition: all .5s ease-in-out;
 }
-.navbar-top .nav-content{
+.nav-content{
     display: flex;
     flex-direction: row;
     align-items:center;
@@ -167,11 +172,24 @@ window.onscroll = scroll_bar_top
     height: 25px;
     cursor: pointer;
 }
-.content{
+.main{
     width: 100%;
     height: auto;
     padding-top: 150px;
     padding-bottom: 150px;
     background-color: rgb(29, 29, 29);
+}
+.aboutme{
+    
+}
+
+.menu-bar{
+    display: flex;
+    flex-direction: row;
+}
+
+@keyframes navbar-move {
+    from{top: 40px}
+    to{top: 0}
 }
 </style>
