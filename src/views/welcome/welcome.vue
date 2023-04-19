@@ -187,10 +187,6 @@ window.onscroll = scroll_bar_top
     scroll-margin-top: 80px;
 }
 
-.aboutme{
-    
-}
-
 .menu-bar{
     display: flex;
     flex-direction: row;
